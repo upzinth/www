@@ -1,0 +1,200 @@
+﻿@model RealEstate.Entities.Property
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Property</h4>
+<hr />
+<div>
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CreatedDate" />
+        <input type="hidden" asp-for="ImageNames" />
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="PropertyTypeId" class="control-label">Type</label>
+                    <select asp-for="PropertyTypeId" class="form-control" asp-items="ViewBag.PropertyTypeId"></select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="PropertyCategoryId" class="control-label">Category</label>
+                    <select asp-for="PropertyCategoryId" class="form-control" asp-items="ViewBag.PropertyCategoryId"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="CityId" class="control-label">City</label>
+                    <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId"></select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="UserId" class="control-label">Agent</label>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                    }
+                    else
+                    {
+                        <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId" disabled></select>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">Title</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group form-check mt-4">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Visible" /> @Html.DisplayNameFor(model => model.Visible)
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group form-check mt-4">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Featured" /> @Html.DisplayNameFor(model => model.Featured)
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <textarea asp-for="Description" class="form-control textarea-editor"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label asp-for="BedRoomCount" class="control-label">Bed Rooms</label>
+                    <input asp-for="BedRoomCount" class="form-control" />
+                    <span asp-validation-for="BedRoomCount" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label asp-for="BathRoomCount" class="control-label">Bath Rooms</label>
+                    <input asp-for="BathRoomCount" class="form-control" />
+                    <span asp-validation-for="BathRoomCount" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label asp-for="KitchenRoomCount" class="control-label">Kitchen Rooms</label>
+                    <input asp-for="KitchenRoomCount" class="form-control" />
+                    <span asp-validation-for="KitchenRoomCount" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label asp-for="ParkingCount" class="control-label">Parkings</label>
+                    <input asp-for="ParkingCount" class="form-control" />
+                    <span asp-validation-for="ParkingCount" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-2">
+                <div class="form-group">
+                    <label asp-for="Size" class="control-label">Size</label>
+                    <input asp-for="Size" class="form-control" />
+                    <span asp-validation-for="Size" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-10">
+                <div class="form-group">
+                    <label asp-for="AdditionalFeatures" class="control-label"></label>
+                    <input asp-for="AdditionalFeatures" class="form-control" />
+                    <span asp-validation-for="AdditionalFeatures" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-2">
+                <div class="form-group">
+                    <label asp-for="Currency" class="control-label">Currency</label>
+                    <select asp-for="Currency" class="form-control">
+                        <option value="₺">₺</option>
+                        <option value="$">$</option>
+                        <option value="£">£</option>
+                    </select>
+                    <span asp-validation-for="Currency" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-10">
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Address" class="control-label"></label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="Latitude" class="control-label"></label>
+                    <input asp-for="Latitude" class="form-control" />
+                    <span asp-validation-for="Latitude" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="Longitude" class="control-label"></label>
+                    <input asp-for="Longitude" class="form-control" />
+                    <span asp-validation-for="Longitude" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Property Images</label>
+            <input id="inputPropertyImages" type="file" required multiple />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_FilePondScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            $('.textarea-editor').summernote({
+                height: 300
+            });
+            createFilePond("inputPropertyImages", "ImageNames");
+        });
+    </script>
+}

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<RealEstate.Entities.News>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex flex-row align-items-center">
+    <h3>
+        News
+    </h3>
+    <a class="btn btn-info btn-sm ml-auto" asp-action="Create">Create News</a>
+</div>
+
+<hr />
+
+<table id="newsTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width: 130px">
+                    <img src="/UploadFiles/Images/@item.ImageName" class="img-thumbnail" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm"><span data-feather="edit-2"></span></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><span data-feather="trash-2"></span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            createTable("#newsTable");
+        });
+    </script>
+}

@@ -1,0 +1,128 @@
+﻿@model IEnumerable<RealEstate.Entities.Property>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex flex-row align-items-center">
+    <h3>
+        Properties
+    </h3>
+    <a class="btn btn-info btn-sm ml-auto" asp-action="Create">Create Property</a>
+</div>
+
+<hr />
+
+<table id="propertiesTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Featured
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Visibility
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Bed
+            </th>
+            <th>
+                Bath
+            </th>
+            <th>
+                Kitchen
+            </th>
+            <th>
+                Parking
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                User
+            </th>
+            <th>
+                Created Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Featured)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertyType.Name)
+                </td>
+                <td>
+                    @if (item.Visible)
+                    {
+                        @("Visible")
+                    }
+                    else
+                    {
+                        @("Hide")
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertyCategory.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BedRoomCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BathRoomCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KitchenRoomCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkingCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Currency)
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Username)
+                </td>
+                <td>
+                    @item.CreatedDate.ToShortDateString()
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm"><span data-feather="edit-2"></span></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><span data-feather="trash-2"></span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            createTable("#propertiesTable");
+        });
+    </script>
+}

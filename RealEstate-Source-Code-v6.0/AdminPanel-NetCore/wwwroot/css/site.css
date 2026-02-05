@@ -1,0 +1,129 @@
+﻿html,
+body {
+    overflow-x: hidden !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#topbar {
+    height: 48px;
+}
+
+#content {
+    padding-top: 48px;
+}
+
+#sidebar-wrapper {
+    margin-left: -230px;
+    height: 100vh;
+    width: 230px;
+    position: fixed;
+    padding-top: 0.5rem;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 100;
+    -webkit-transition: margin 0.25s ease-out;
+    -moz-transition: margin 0.25s ease-out;
+    -o-transition: margin 0.25s ease-out;
+    transition: margin 0.25s ease-out;
+}
+
+#content-wrapper {
+    width: 100%;
+    padding: 20px 20px 20px 20px;
+    box-sizing: border-box;
+    -webkit-transition: padding 0.25s ease-out;
+    -moz-transition: padding 0.25s ease-out;
+    -o-transition: padding 0.25s ease-out;
+    transition: padding 0.25s ease-out;
+}
+
+/* navbar */
+.navbar-brand {
+    font-size: 1rem;
+    align-items: center;
+    display: flex;
+    margin-left: 1rem;
+}
+
+.navbar-toggler {
+    display: inline-block;
+}
+
+/* sidebar */
+.sidebar .nav-link {
+    font-weight: 400;
+    color: #333;
+    padding: 0.75rem 1rem;
+}
+
+    .sidebar .nav-link .feather {
+        margin-right: 8px;
+        color: #999;
+        width: 18px;
+        height: 18px;
+        vertical-align: text-bottom;
+    }
+
+    .sidebar .nav-link.active {
+        color: #007bff;
+    }
+
+        .sidebar .nav-link:hover .feather,
+        .sidebar .nav-link.active .feather {
+            color: inherit;
+        }
+
+    .sidebar .nav-link:hover {
+        background-color: lightgray;
+    }
+
+.sidebar-heading {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+#sidebar-wrapper.show-menu {
+    margin-left: 0px;
+}
+
+#content-wrapper.show-menu {
+    padding: 20px 20px 20px 250px;
+}
+
+.table .feather {
+    width: 16px;
+    height: 16px;
+}
+
+
+.table tr td:last-child,
+.table tr th:last-child {
+    white-space: nowrap;
+    text-align: right;
+}
+
+.table .img-thumbnail {
+    width: 120px
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0px;
+    }
+
+    #content-wrapper {
+        padding: 20px 20px 20px 250px;
+    }
+
+    .navbar-brand {
+        margin-left: 0rem;
+    }
+
+    .navbar-toggler {
+        display: none;
+    }
+}

@@ -1,0 +1,23 @@
+Licenses;
+https://codecanyon.net/licenses/terms/regular
+https://codecanyon.net/licenses/terms/extended
+
+Preview Images in App;
+Photo by Douglas Sheppard on Unsplash
+Photo by Naomi Hébert on Unsplash
+Photo by Ralph Kayden on Unsplash
+Photo by Vecislavas Popa on Pexels
+Photo by Alberto Castillo Q. on Unsplash
+Photo by Ярослав Алексеенко on Unsplash
+Photo by Dmitry Zvolskiy on Pexels
+Photo by Expect Best on Pexels
+Photo by Mark McCammon on Pexels
+Photo by Vecislavas Popa on Pexels
+Photo by DeMorris Byrd on Unsplash
+Photo by Wynand van Poortvliet on Unsplash
+Photo by Digital Marketing Agency NTWRK on Unsplash
+Photo by Francesca Tosolini on Unsplash
+
+Google Fonts:
+https://fonts.google.com/specimen/Rubik
+https://fonts.google.com/specimen/Mada

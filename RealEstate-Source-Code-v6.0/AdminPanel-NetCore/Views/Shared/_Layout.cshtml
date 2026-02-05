@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, min-scale=1, max-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Admin Template">
+    <meta name="author" content="Huseyin Ozer">
+
+    <title>PublRealty - Admin Panel</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/sp-1.0.1/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+
+    <!-- Filepond stylesheet -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+</head>
+
+<body>
+    <nav id="topbar" class="navbar navbar-dark bg-dark shadow fixed-top">
+        <button id="buttonMenu" class="navbar-toggler">
+            <span data-feather="menu" style="color: white;"></span>
+        </button>
+        <div class="navbar-brand p-0 mr-auto">
+            <a>Real Estate</a>
+        </div>
+
+        <div class="navbar-expand">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link p-0 px-2" asp-controller="Login" asp-action="Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="content" class="d-flex">
+        <div id="sidebar-wrapper" class="sidebar bg-light">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" is-active-route asp-controller="Home" asp-action="Index">
+                        <span data-feather="grid"></span>Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" is-active-route asp-controller="Properties" asp-action="Index">
+                        <span data-feather="home"></span>Property
+                    </a>
+                </li>
+                @{if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" is-active-route asp-controller="PropertyCategories" asp-action="Index">
+                                <span data-feather="layers"></span>Property Categories
+                            </a>
+                        </li>
+                    }}
+                @{if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" is-active-route asp-controller="Cities" asp-action="Index">
+                                <span data-feather="map-pin"></span>Cities
+                            </a>
+                        </li>
+                    }}
+                @{if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" is-active-route asp-controller="News" asp-action="Index">
+                                <span data-feather="tv"></span>News
+                            </a>
+                        </li>
+                    }}
+                @{if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" is-active-route asp-controller="NewsCategories" asp-action="Index">
+                                <span data-feather="umbrella"></span>News Categories
+                            </a>
+                        </li>
+                    }}
+                @{ if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" is-active-route asp-controller="Users" asp-action="Index">
+                                <span data-feather="user"></span>Users
+                            </a>
+                        </li>
+                    }}
+                <li class="nav-item">
+                    <a class="nav-link" is-active-route asp-controller="Settings" asp-action="Index">
+                        <span data-feather="settings"></span>Settings
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="content-wrapper">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Datatables -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/sp-1.0.1/datatables.min.js"></script>
+
+    <!-- Summernote -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+
+</html>
